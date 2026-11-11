@@ -29,6 +29,25 @@ else:
     )
 
 st.set_page_config(page_title="AppCursinho UFSC", layout="wide")
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #f2f7f4;
+    }
+
+    [data-testid="stSidebar"] {
+        background-color: #dceee8;
+        border-right: 1px solid #c3ded3;
+    }
+
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+        color: #174b3a;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 init_db()
 
 
@@ -352,7 +371,7 @@ def mensalidade_form(record, key_prefix: str):
 
 
 def render_dashboard():
-    st.title("Sistema Web do Cursinho UFSC")
+    st.title("📚 Sistema Web do Cursinho UFSC")
     st.caption("Painel administrativo para organização do cursinho")
 
     with SessionLocal() as session:
@@ -519,7 +538,7 @@ def main():
         "Mensalidades": render_mensalidade_page,
     }
 
-    page = st.sidebar.radio("Navegação", list(pages.keys()))
+    page = st.sidebar.radio("📚 Navegação", list(pages.keys()))
     pages[page]()
 
 
