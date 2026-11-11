@@ -39,13 +39,17 @@ A aplicação foi desenvolvida com Streamlit e SQLAlchemy, com suporte a SQLite 
 uv sync
 ```
 
-3. Configure a variável de ambiente para conexão com MySQL em produção (opcional durante desenvolvimento local):
+3. Configure as variáveis de conexão MySQL no arquivo `.env` local (o arquivo está no `.gitignore` e não deve ser compartilhado):
 
-```bash
-export MYSQL_DATABASE_URL="mysql+pymysql://usuario:senha@host:3306/appcursinho"
+```dotenv
+MYSQL_USER=seu_usuario
+MYSQL_PASSWORD=sua_senha
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_DATABASE=appcursinho
 ```
 
-Se a variável não estiver definida, o sistema usará SQLite automaticamente para testes locais.
+Também é possível configurar `MYSQL_DATABASE_URL` no ambiente de produção, por exemplo nos Secrets do Streamlit Community Cloud. Essa variável tem prioridade sobre as variáveis individuais. Se nenhuma configuração MySQL for definida, o sistema usa SQLite automaticamente para testes locais.
 
 ## Como executar
 
