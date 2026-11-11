@@ -7,7 +7,10 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from src.models import Base
+if __package__:
+    from .models import Base
+else:
+    from models import Base
 
 load_dotenv()
 

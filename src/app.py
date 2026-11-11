@@ -5,16 +5,28 @@ from datetime import date
 import pandas as pd
 import streamlit as st
 
-from src.db import SessionLocal, init_db
-from src.models import (
-    Disciplina,
-    Estudante,
-    Horario,
-    Mensalidade,
-    Professor,
-    ProfessorDisciplinaTurma,
-    Turma,
-)
+if __package__:
+    from .db import SessionLocal, init_db
+    from .models import (
+        Disciplina,
+        Estudante,
+        Horario,
+        Mensalidade,
+        Professor,
+        ProfessorDisciplinaTurma,
+        Turma,
+    )
+else:
+    from db import SessionLocal, init_db
+    from models import (
+        Disciplina,
+        Estudante,
+        Horario,
+        Mensalidade,
+        Professor,
+        ProfessorDisciplinaTurma,
+        Turma,
+    )
 
 st.set_page_config(page_title="AppCursinho UFSC", layout="wide")
 init_db()
